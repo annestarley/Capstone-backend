@@ -44,7 +44,6 @@ const getArticleTones = (article) => {
     }
 
     article.tone = objTone
-    // console.log('RESULTS!!!', article)
     return article
   })
 }
@@ -59,12 +58,6 @@ const getTopArticles = () => {
 
       return Promise.all(promises)
     })
-    // .then(results => {
-    //   console.log(results)
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    // })
 }
 
 module.exports = {
