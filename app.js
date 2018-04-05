@@ -17,8 +17,10 @@ app.use(cors())
 
 let users = require('./routes/users')
 let toparticles = require('./routes/toparticles');
+let additionalarticles = require('./routes/additionalarticles')
 app.use('', users)
 app.use('', toparticles)
+app.use('', additionalarticles)
 
 app.listen(port, () => console.log(`Listening on port: ${port}`))
 
