@@ -11,6 +11,20 @@ const toparticlesController = (req, response, next) => {
     })
 }
 
+const additionalArticlesController = (req, response, next) => {
+  let category = req.params.category
+  console.log('category', category)
+  model.getAdditionalArticles(category)
+    .then(results => {
+      console.log(results)
+      response.json(results)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
 module.exports = {
-  toparticlesController
+  toparticlesController,
+  additionalArticlesController
 }

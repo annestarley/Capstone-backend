@@ -60,6 +60,19 @@ const getTopArticles = () => {
     })
 }
 
+const getAdditionalArticles = (category) => {
+  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=${category}&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
+    .then(res => {
+
+      let promises = res.data.articles.map(article => {
+        return getArticleTones(article)
+      })
+
+      return Promise.all(promises)
+    })
+}
+
 module.exports = {
-  getTopArticles
+  getTopArticles,
+  getAdditionalArticles
 }
