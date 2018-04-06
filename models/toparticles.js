@@ -39,7 +39,7 @@ const getArticleTones = (article) => {
         conscientiousness: socialTone[1].score,
         extraversion: socialTone[2].score,
         agreeableness: socialTone[3].score,
-        emotionalRange: socialTone[4].score
+        // emotionalRange: socialTone[4].score
       }
     }
 
