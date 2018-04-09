@@ -43,7 +43,7 @@ const getArticleTones = (article) => {
   })
 }
 
-const getTopArticles = () => {
+const fetchTopArticles = () => {
   return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=4&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
     .then(res => {
 
@@ -68,7 +68,7 @@ const getAdditionalArticles = (category) => {
     })
 }
 
-const getTopArticlesForFrontend =() => {
+const getTopArticles = () => {
   return knex('topArticles')
 }
 
@@ -111,8 +111,8 @@ getUserArticle = (userURL) => {
 
 module.exports = {
   addArticle,
+  fetchTopArticles,
   getTopArticles,
   getAdditionalArticles,
-  getTopArticlesForFrontend,
   getUserArticle
 }

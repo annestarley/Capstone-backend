@@ -3,7 +3,7 @@
 let model = require('./models/toparticles')
 let knex = require('./db')
 
-model.getTopArticles()
+model.fetchTopArticles()
   .then(result => {
     let promises = result.map(article => {
       return knex('top_articles').where('title', article.title).first()
