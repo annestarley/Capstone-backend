@@ -24,7 +24,33 @@ const additionalArticlesController = (req, response, next) => {
     })
 }
 
+const getTopArticlesForFrontendController = (req, response, next) => {
+  model.getTopArticlesForFrontend()
+    .then(result => {
+      return response.json(results)
+    })
+    .catech(err => {
+      console.log(err)
+    })
+}
+
+const getUserArticleController = (req, response, next) => {
+  console.log('here', req.body.url)
+  // console.log(req)
+  let userURL = req.body.url
+
+  model.getUserArticle(userURL)
+    .then(results => {
+      console.log(results)
+      response.json(results)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
 module.exports = {
   toparticlesController,
-  additionalArticlesController
+  additionalArticlesController,
+  getUserArticleController
 }

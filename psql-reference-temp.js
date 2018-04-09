@@ -1,0 +1,21 @@
+hey-good-news=# CREATE TABLE topArticles (
+hey-good-news(# id serial,
+hey-good-news(# author text,
+hey-good-news(# description text,
+hey-good-news(# publishedAt text,
+hey-good-news(# sourceName text,
+hey-good-news(# title text,
+hey-good-news(# anger float,
+hey-good-news(# disgust float,
+hey-good-news(# fear float,
+hey-good-news(# joy float,
+hey-good-news(# analytical float,
+hey-good-news(# confident float,
+hey-good-news(# tentative float,
+hey-good-news(# agreeableness float,
+hey-good-news(# conscientiousness float,
+hey-good-news(# extraversion float,
+hey-good-news(# openness float,
+hey-good-news(# url text,
+hey-good-news(# urlToImage text
+hey-good-news(# );
