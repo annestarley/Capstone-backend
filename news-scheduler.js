@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 
-
 let model = require('./models/toparticles')
-let db = require('./db')
+let knex = require('./db')
 
 model.getTopArticles()
   .then(result => {
-    result.forEach(article => {
-      model.addArticle(article)
-        .then(done => console.log('article done', done.id))
-        .catch(console.error)
+    let promises = result.map(article => {
+      return knex('top_articles').where('title', article.title).first()
+        .then(res => {
+          if (!res) {
+            return knex('top_articles').insert(article).returning('*')
+          }
+        })
     })
-    // return model.addArticle(result)
+    return Promise.all(promises)
   })
   .then(insert => {
-    console.log(insert);
-    // process.exit(0)
-    // db.destroy()
+    knex.destroy()
   })
   .catch(err => {
     console.log(err)

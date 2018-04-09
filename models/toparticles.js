@@ -44,7 +44,7 @@ const getArticleTones = (article) => {
 }
 
 const getTopArticles = () => {
-  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=3&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
+  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=4&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
     .then(res => {
 
       let promises = res.data.articles.map(article => {
