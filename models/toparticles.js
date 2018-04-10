@@ -56,7 +56,12 @@ const fetchTopArticles = () => {
     })
 }
 
-const getAdditionalArticles = (category) => {
+const getTopArticles = () => {
+  return knex('top_articles')
+  .returning('*')
+}
+
+const fetchAdditionalArticles = (category) => {
   return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=${category}&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
     .then(res => {
 
@@ -68,8 +73,80 @@ const getAdditionalArticles = (category) => {
     })
 }
 
-const getTopArticles = () => {
-  return knex('top_articles')
+const fetchScienceArticles = (category) => {
+  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=science&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
+    .then(res => {
+
+      let promises = res.data.articles.map(article => {
+        return getArticleTones(article)
+      })
+
+      return Promise.all(promises)
+    })
+}
+
+const fetchSportsArticles = (category) => {
+  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=sports&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
+    .then(res => {
+
+      let promises = res.data.articles.map(article => {
+        return getArticleTones(article)
+      })
+
+      return Promise.all(promises)
+    })
+}
+
+const fetchBusinessArticles = (category) => {
+  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=business&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
+    .then(res => {
+
+      let promises = res.data.articles.map(article => {
+        return getArticleTones(article)
+      })
+
+      return Promise.all(promises)
+    })
+}
+
+const fetchEntertainmentArticles = (category) => {
+  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=entertainment&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
+    .then(res => {
+
+      let promises = res.data.articles.map(article => {
+        return getArticleTones(article)
+      })
+
+      return Promise.all(promises)
+    })
+}
+
+const fetchHealthArticles = (category) => {
+  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=health&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
+    .then(res => {
+
+      let promises = res.data.articles.map(article => {
+        return getArticleTones(article)
+      })
+
+      return Promise.all(promises)
+    })
+}
+
+const fetchTechnologyArticles = (category) => {
+  return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=technology&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
+    .then(res => {
+
+      let promises = res.data.articles.map(article => {
+        return getArticleTones(article)
+      })
+
+      return Promise.all(promises)
+    })
+}
+
+const getAdditionalArticles = (category) => {
+  return knex(`${category}_articles`)
   .returning('*')
 }
 
@@ -114,6 +191,13 @@ module.exports = {
   addArticle,
   fetchTopArticles,
   getTopArticles,
+  fetchAdditionalArticles,
+  fetchScienceArticles,
+  fetchSportsArticles,
+  fetchBusinessArticles,
+  fetchEntertainmentArticles,
+  fetchHealthArticles,
+  fetchTechnologyArticles,
   getAdditionalArticles,
   getUserArticle
 }
