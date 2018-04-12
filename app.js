@@ -5,7 +5,7 @@ const port = process.env.PORT || 8000
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const path = require('path')
-require('dotenv').config()
+// require('dotenv').config()
 
 const axios = require('axios')
 const read = require('node-readability')
