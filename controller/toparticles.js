@@ -35,8 +35,6 @@ const getTopArticlesForFrontendController = (req, response, next) => {
 }
 
 const getUserArticleController = (req, response, next) => {
-  console.log('here', req.body.url)
-  // console.log(req)
   let userURL = req.body.url
 
   model.getUserArticle(userURL)
