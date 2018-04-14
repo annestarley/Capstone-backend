@@ -61,7 +61,7 @@ const getTopArticles = () => {
   .returning('*')
 }
 
-const fetchAdditionalArticles = (category) => {
+const getAdditionalArticles = (category) => {
   return axios.get(`https://newsapi.org/v2/top-headlines?country=us&pageSize=2&category=${category}&apiKey=a4d490bdd93d405d8bc422ace61c795f`)
     .then(res => {
 
@@ -145,11 +145,6 @@ const fetchTechnologyArticles = (category) => {
     })
 }
 
-const getAdditionalArticles = (category) => {
-  return knex(`${category}_articles`)
-  .returning('*')
-}
-
 getUserArticle = (userURL) => {
   let result = {}
 
@@ -191,7 +186,6 @@ module.exports = {
   addArticle,
   fetchTopArticles,
   getTopArticles,
-  fetchAdditionalArticles,
   fetchScienceArticles,
   fetchSportsArticles,
   fetchBusinessArticles,

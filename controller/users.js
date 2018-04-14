@@ -15,6 +15,22 @@ const findUserToneController = (req, res, next) => {
   })
 }
 
+const userCreaterController = (req, res, next) => {
+  console.log(req.body.userInput);
+
+  let userInput = req.body.userInput
+
+  model.postUserInfoModel(userInput)
+  .then(results => {
+    console.log(results)
+    res.json(results)
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}
+
 module.exports = {
-  findUserToneController
+  findUserToneController,
+  userCreaterController
 }
