@@ -16,11 +16,13 @@ const findUserToneController = (req, res, next) => {
 }
 
 const userCreaterController = (req, res, next) => {
-  console.log(req.body.userInput);
+  console.log(req.body);
 
-  let userInput = req.body.userInput
+  username = req.body.username
+  email = req.body.email
+  if (!email) return enxt({status: `Required: make sure to include an email!`})
 
-  model.postUserInfoModel(userInput)
+  model.postUserInfoModel(username, email)
   .then(results => {
     console.log(results)
     res.json(results)

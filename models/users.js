@@ -13,7 +13,7 @@ const findUserToneModel = (userInput) => {
   })
   .then(res => {
     let article = {}
-    
+
     let emotionTone = res.data.document_tone.tone_categories[0].tones;
     let languageTone = res.data.document_tone.tone_categories[1].tones
     let socialTone = res.data.document_tone.tone_categories[2].tones
@@ -34,6 +34,18 @@ const findUserToneModel = (userInput) => {
   })
 }
 
+const postUserInfoModel = (username, email) => {
+  let user = {
+    username: username,
+    email: email
+  }
+
+  return knex('users')
+    .insert(user)
+    .returning('*')
+}
+
 module.exports = {
-  findUserToneModel
+  findUserToneModel,
+  postUserInfoModel
 }
