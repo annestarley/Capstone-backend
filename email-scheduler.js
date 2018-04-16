@@ -25,7 +25,6 @@ knex('top_articles')
     })
     knex('users').returning('*')
       .then(users => {
-        console.log('JOYOUS ARTICLES INSIDE USERS KNEX', joyousArticle)
         users.forEach(user => {
           var mailOptions = {
               from: 'heygoodnewsforyou@gmail.com',
@@ -43,6 +42,9 @@ knex('top_articles')
 
         })
       })
+  })
+  .then(insert => {
+    knex.destroy()
   })
   .catch(err => {
     console.log(err)
