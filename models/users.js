@@ -1,5 +1,13 @@
 const axios = require('axios')
 const knex = require('../db')
+var nodemailer = require('nodemailer')
+var transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: 'heygoodnewsforyou@gmail.com',
+        pass: 'heygoodnews'
+    }
+});
 
 const findUserToneModel = (userInput) => {
   return axios({
@@ -45,7 +53,33 @@ const postUserInfoModel = (username, email) => {
     .returning('*')
 }
 
+const sendEmailModel = () => {
+
+  knex('users').returning('*')
+    .then(users => {
+      users.forEach(user => {
+        var mailOptions = {
+            from: 'heygoodnewsforyou@gmail.com',
+            to: user.email,
+            subject: `Hey ${user.username}, good news!`,
+            html: '<p>Ready for some good news? Here is your link to your daily joyous article!</p>'
+        };
+
+        transporter.sendMail(mailOptions, function (err, info) {
+           if(err)
+             console.log(err)
+           else
+             console.log(info);
+        });
+
+      })
+    })
+
+
+}
+
 module.exports = {
   findUserToneModel,
-  postUserInfoModel
+  postUserInfoModel,
+  sendEmailModel
 }

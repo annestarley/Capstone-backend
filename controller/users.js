@@ -32,7 +32,19 @@ const userCreaterController = (req, res, next) => {
   })
 }
 
+const sendEmailController = (req, res, next) => {
+  model.sendEmailModel()
+    .then(result => {
+      console.log(result)
+      res.json(results)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
 module.exports = {
   findUserToneController,
-  userCreaterController
+  userCreaterController,
+  sendEmailController
 }
