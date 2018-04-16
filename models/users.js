@@ -74,8 +74,6 @@ const sendEmailModel = () => {
 
       })
     })
-
-
 }
 
 module.exports = {
