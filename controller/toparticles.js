@@ -29,7 +29,7 @@ const getTopArticlesForFrontendController = (req, response, next) => {
     .then(result => {
       return response.json(results)
     })
-    .catech(err => {
+    .catch(err => {
       console.log(err)
     })
 }
